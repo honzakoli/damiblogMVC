@@ -13,11 +13,14 @@ class Loader
         if ($this->baseDir === false) {
             throw new LogicException("BaseDir not exists!");
         }
-
-        spl_autoload_register([$this, 'register']);
     }
 
-    public function register(string $className)
+    public function register(): void
+    {
+        spl_autoload_register([$this, 'handleAutoload']);
+    }
+
+    public function handleAutoload(string $className)
     {
         # code...
     }
